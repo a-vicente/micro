@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:micro="http://micro.sicedesign.com">
+
+<head>
+</head>
+
+<body>
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-10">
+						<h1>Registo de Cliente</h1>
+					</div>
+
+
+					<div class="col-sm-2">
+						<div class="aw-page-header-controls">
+							<a class="btn  btn-default" th:href="@{/clientes}"> <i
+								class="glyphicon  glyphicon-share-alt"></i> <span
+								class="hidden-xs  hidden-sm">Pesquisa Cliente</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" th:object="${cliente}"
+				class="form-vertical  js-form-loading" th:action="@{/clientes/novo}">
+
+				<micro:message />
+
+				<div class="row">
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="nome">
+						<label for="nome" class="control-label">Nome</label> <input
+							id="nome" type="text" class="form-control" th:field="*{nome}" autocomplete="off"/>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="apelido">
+						<label for="apelido" class="control-label">Apelido</label> <input
+							id="apelido" type="text" class="form-control"
+							th:field="*{apelido}" autocomplete="off"/>
+					</div>
+
+					<div class="col-sm-2 form-group-sm ef-required"
+						micro:classforerror="sexo">
+						<label for="sexo" class="control-label">Sexo</label> <select
+							class="form-control" id="sexo" th:field="*{sexo}">
+							<option value="">Selecione Sexo</option>
+							<option th:each="sexo : ${sexo}" th:value="${sexo}"
+								th:text="${sexo.descricao}"></option>
+						</select>
+					</div>
+
+					<div class="col-sm-2 form-group-sm ef-required"
+						micro:classforerror="estadoCivil">
+						<label for="estadoCivil" class="control-label">Estado
+							Civil</label> <select id="estadoCivil" class="form-control"
+							th:field="*{estadoCivil}">
+							<option value="">Selecione Estado Civil</option>
+							<option th:each="estadoCivil : ${estadoCivil}"
+								th:value="${estadoCivil}" th:text="${estadoCivil.descricao}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="dataNascimento">
+						<label for="dataNascimento" class="control-label">Data
+							Nascimento</label> <input id="dataNascimento" type="text"
+							class="form-control" th:field="*{dataNascimento}"
+							data-provide="datepicker" data-date-format="dd/mm/yyyy"
+							data-date-language="pt-BR" data-date-autoclose="true"
+							data-date-today-highlight="true" data-date-orientation="bottom"
+							data-date-end-date="0d"
+							data-date-days-of-week-highlighted="1,2,3,4,5" autocomplete="off"/>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="tipoDocumento">
+						<label for="tipoDocumento" class="control-label">Tipo
+							Documento</label> <select id="tipoDocumento" class="form-control"
+							th:field="*{tipoDocumento}">
+							<option value="">Selecione Tipo Documento</option>
+							<option th:each="tipoDocumento : ${tipoDocumento}"
+								th:value="${tipoDocumento}" th:text="${tipoDocumento.descricao}"></option>
+						</select>
+					</div>
+
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="numeroDocumento">
+						<label for="numeroDocumento" class="control-label">Número
+							Documento</label> <input id="numeroDocumento" type="text"
+							class="form-control" th:field="*{numeroDocumento}" autocomplete="off"/>
+					</div>
+					
+					
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="nacionalidade">
+						<label for="nacionalidade" class="control-label">Nacionalidade</label>
+						<div class="ef-field-action">
+							<select id="nacionalidade" class="form-control"
+								th:field="*{nacionalidade}">
+								<option value="">Selecione Nacionalidade</option>
+								<option th:each="nacionalidade : ${nacionalidade}"
+									th:value="${nacionalidade.codigo}"
+									th:text="${nacionalidade.nome}"></option>
+							</select>
+
+							<div class="ef-field-action__icon">
+								<a href="#" data-toggle="modal"
+									data-target="#modal-cadastro-rapido-nacionalidade"> <i
+									class="glyphicon  glyphicon-plus-sign  ef-glyphicon-large"></i>
+								</a>
+							</div>
+						</div>
+
+					</div>
+					
+					
+					
+						<div class="col-sm-4 form-group-sm ef-required" micro:classforerror="endereco.provincia">
+						<label for="provincia" class="control-label">Proví.
+							Residência</label>
+							<select id="provincia"	class="form-control" th:field="*{endereco.provincia}">
+								<option value="">Selecione a Província</option>
+								<option th:each="provincias : ${provincias}" th:value="${provincias.codigo}" th:text="${provincias.nome}"></option>
+							</select>
+					</div>
+
+					<div class="col-sm-2 form-group-sm ef-required" micro:classforerror="endereco.distrito">
+						<label for="distrito" class="control-label">Distrito Residência</label>
+						<div class="ef-field-action">
+						<input type="hidden" id="inputHiddenDistritoSelecionado" th:value="*{endereco.distrito} != null ? *{endereco.distrito.codigo}"/>
+						 	<select id="distrito" class="form-control" data:url="@{/distrito}" th:field="*{endereco.distrito}">
+						</select>
+						
+						<div class="ef-field-action__icon  js-img-loading" style="display: none">
+							<img th:src="@{/images/mini-loading.gif}"/>
+						</div>
+					</div>
+					</div>
+					
+					<div class="col-sm-2 form-group-sm sd-required"
+						micro:classforerror="avenida">
+						<label for="avenida" class="control-label">Avenida</label>
+						<div class="input-group">
+							
+							<input id="avenida" type="text" class="form-control"
+								th:field="*{avenida}" autocomplete="off"/>
+						</div>
+					</div>
+
+
+
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4 form-group-sm sd-required"
+						micro:classforerror="email">
+						<label for="email" class="control-label">E-mail</label>
+						<div class="input-group">
+							<div class="input-group-addon">@</div>
+							<input id="email" type="text" class="form-control"
+								th:field="*{email}" autocomplete="off"/>
+						</div>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="contacto">
+						<label for="contacto" class="control-label">Contacto</label>
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<input id="contacto" type="text" class="form-control"
+								th:field="*{contacto}" autocomplete="off"/>
+						</div>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="contactoAlternativo">
+						<label for="contactoAlternativo" class="control-label">Contacto
+							Alternativo</label>
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<input id="contactoAlternativo" type="text" class="form-control"
+								th:field="*{contactoAlternativo}" autocomplete="off"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					 <div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="tipoPessoa">
+						<label for="tipoPessoa">Tipo Pessoa</label>
+						<div>
+							<th:block th:each="tipoPessoa : ${tipoPessoa}">
+								<div class="radio  radio-inline">
+									<input th:id="|id_${tipoPessoa}|" type="radio"
+										th:value="${tipoPessoa}" th:field="*{tipoPessoa}"
+										data:documento="${tipoPessoa.documento}"
+										data:mascara="${tipoPessoa.mascara}"
+										class="form-control js-radio-tipo-pessoa"> <label
+										class="control-label" th:for="|id_${tipoPessoa}|"
+										th:text="${tipoPessoa.descricao}"></label>
+								</div>
+							</th:block>
+						</div>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="nomeEmpresaProfissao">
+						<label for="nomeEmpresaProfissao" class="control-label">Profissão/Nome
+							Empresa</label> <input id="nomeEmpresaProfissao" type="text" class="form-control"
+							th:field="*{nomeEmpresaProfissao}" disabled autocomplete="off"/>
+					</div>
+
+					<div class="col-sm-4 form-group-sm ef-required"
+						micro:classforerror="nuit">
+						<label for="nuit" class="control-label">Nuit</label> <input
+							id="nuit" type="text" class="form-control" th:field="*{nuit}" />
+					</div>
+
+
+				</div>
+				
+		
+
+
+				<div class="form-group-sm">
+					<button class="btn  btn-primary  btn-sm " type="submit">Salvar</button>
+					<a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+				</div>
+
+			</form>
+		</div>
+
+		<div th:replace="nacionalidade/cadastro-rapido-nacionalidade :: modal"></div>
+		<div th:replace="profissao/cadastro-rapido-profissao :: modal"></div>
+	</section>
+
+	<th:block layout:fragment="javascript-extra">
+
+	</th:block>
+
+</body>
+</html>

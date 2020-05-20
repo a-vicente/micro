@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:micro="http://micro.sicedesign.com">
+	  
+<body>
+
+	<section layout:fragment="conteudo">
+
+
+<div class="page-header">
+	<div class="container-fluid">
+		<h1>
+			Cadastro de Profissão
+		</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+
+
+	<form method="POST" th:object="${profissao}" class="form-vertical  js-form-loading" th:action="@{/profissao/novo}">
+	
+					<micro:message />
+
+	
+			<div class="row">
+		<div class="form-group-sm col-sm-9 ef-required" micro:classforerror="nome">
+			<label for="nome" class="control-label">Profissão</label>
+			<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+		</div>
+	</div>
+		
+		<div class="form-group-sm">
+			<button class="btn  btn-primary  btn-sm" type="submit">Salvar</button>
+			<a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+		</div>
+
+	</form>
+</div>
+
+
+	</section>
+
+</body>
+</html>

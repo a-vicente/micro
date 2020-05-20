@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+		xmlns:micro="http://micro.sicedesign.com"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<body>
+
+	<aside class="aw-layout-sidebar  js-sidebar" th:fragment="sidebar">
+		<div class="aw-layout-sidebar__content">
+
+
+<nav class="aw-menu  js-menu">
+				<ul class="aw-menu__list">
+
+					<li class="aw-menu__item"
+						sec:authorize="hasRole('ROLE_ADMINISTRADOR')"
+						micro:menu="@{/}"><a th:href="@{/}"><i
+							class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a></li>
+
+					<li class="aw-menu__item"
+						sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a href="#">
+							<i class="fa  fa-fw  fa-database"></i><span>Registros</span> <i
+							class="aw-menu__navigation-icon  fa"></i>
+					</a>
+
+						<ul class="aw-menu__list  aw-menu__list--sublist">
+							<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/clientes.*}"><a th:href="@{/clientes/novo}">Cliente</a></li>
+							
+							
+									<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/emprestimos.*}"><a th:href="@{/nacionalidades/novo}">Emprestímo</a></li>
+									<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/desembolsos.*}"><a th:href="@{/nacionalidades/novo}">Desembolso</a></li>
+									<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/retorno.*}"><a th:href="@{/nacionalidades/novo}">Pagamento/Retorno</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/nacionalidades.*}"><a th:href="@{/nacionalidade/novo}">País</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"
+								micro:menu="@{/nacionalidades.*}"><a th:href="@{/profissao/novo}">Profissão</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"
+								sec:authorize="hasRole('ROLE_ADMINISTRADOR')"
+								micro:menu="@{/usuarios.*}"><a th:href="@{/usuarios/novo}">Usuários</a></li>
+						</ul></li>
+
+
+					<li class="aw-menu__item"
+						sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a href="#">
+							<i class="fa  fa-fw  fa-file-text"></i><span>Relatório</span> <i
+							class="aw-menu__navigation-icon  fa"></i>
+					</a>
+
+						<ul class="aw-menu__list  aw-menu__list--sublist">
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="pagina-vazia.html">Relatório De Amortizações</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="login.html">Relatório Dos Clientes Fiel</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="esqueceu-a-senha.html">Relatório Dos Clientes Desonestos </a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="403.html">Relatório De Desembolsos</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="404.html">Relatório De Juros De Moras</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a
+								href="500.html">Relatório De Pagamentos</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+								href="500.html">Relatório De Acesso ao Sistema P/Usuário</a></li>
+						</ul></li>
+
+				</ul>
+
+			</nav>
+
+
+
+			
+		</div>
+	</aside>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<script id="tabela-pesquisa-rapida-cliente" type="text/x-handlebars-template">
+<div class="table-responsive  bw-tabela-simples" style="margin-top: 15px">
+	<table class="table  table-hover">
+		<thead>
+			<tr>
+			</tr>
+		</thead>
+				
+		<tbody>
+			{{#if .}}
+				{{#each .}}
+					<tr>
+					<td colspan="4" class="label label-success">Validado com Sucesso!</td>
+ 					</tr>
+				{{/each}}
+			{{else}}
+				<tr>
+					<td colspan="4" class="label label-danger">Código inválido!</td>
+				</tr>
+			{{/if}}
+		</tbody>
+	</table>
+</div>
+</script>

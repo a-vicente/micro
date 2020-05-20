@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+		xmlns:data="http://www.thymeleaf.org/extras/data"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:micro="http://micro.sicedesign.com">
+
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>Dashboard</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+					<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-credit-card  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tdoe}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-success">Documentos
+							Entregues</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-users fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tpe}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-success">Pessoas
+							Localizadas</span>
+					</div>
+				</div>
+			</div>
+			
+				<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-mobile  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tde}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-success">Dispositivo
+							Entregues</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-check  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tdoen}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-warning">Documentos
+							Encontrados</span>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-check  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tpen}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-warning">Pessoas
+							Encontradas</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-check  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tden}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-warning">Dispositivos
+							Encontrados</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4">
+			<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-exclamation-triangle  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tdop}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-danger">Documentos
+							Pendentes</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-exclamation-triangle  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tpp}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-danger">Pessoas
+							Pendentes</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa  fa-exclamation-triangle  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">[[${{tdp}}]]</div>
+					<div class="aw-box__title">
+						<span class="label label-danger">Dispositivos
+							Pendentes</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="aw-graph-box">
+					<div class="aw-graph-box__header">
+						<h2 class="aw-graph-box__title">
+							Documentos por mês <small>últimos 6 meses</small>
+						</h2>
+					</div>
+					<div class="aw-graph-box__content">
+						<div>
+							<canvas id="graficoVendasPorMes" height="160"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+		
+		</div>
+	
+
+</section>
+
+<th:block layout:fragment="javascript-extra">
+
+</th:block>
+
+</html>

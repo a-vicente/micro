@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html 	lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:data="http://www.thymeleaf.org/extras/data"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layout/LayoutPadrao"
+		xmlns:saude="http://saude.sicdesign.co.mz">
+
+<body>
+
+
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+				<div class="col-sm-10">
+					<h1>Pesquisa de Pacientes</h1>
+				</div>
+				
+				<div class="col-sm-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/paciente/novo}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Cadastro Paciente</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+		
+		<form method="GET">
+			<div class="row">
+				<div class="form-group-sm  col-sm-6" >
+					<label class="control-label" for="nome">Nome</label>
+					<input type="text" class="form-control" id="nome"/>
+				</div>
+				<div class="form-group-sm  col-sm-6">
+					<label class="control-label" for="apelido">Apelido</label>
+					<input type="text" class="form-control" id="apelido"/>
+				</div>
+			</div>
+
+			
+			<div class="row">
+				<div class="form-group-sm  col-sm-6">
+					<label class="control-label" for="nid">NID</label>
+					<input type="text" class="form-control" id="nid"/>
+				</div>
+				<div class="form-group-sm  col-sm-6">
+					<label class="control-label" for="numeroDocumento">Numero Documento</label>
+					<input type="text" class="form-control" id="numeroDocumento"/>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn  btn-primary  btn-sm">Pesquisar</button>
+		</form>
+		
+		
+		<div class="table-responsive  bw-tabela-simples">
+			<table class="table  table-hover">
+				<thead>
+					<tr>
+						<th class="table-sd-col-sku">Nome</th>
+						<th class="sd-col-nome">Apelido</th>
+						<th class="table-sd-col-estilo">Sexo</th>
+						<th class="table-sd-col-origem">NID</th>
+						<th class="table-sd-col-acoes"></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="paciente : ${pacientes}">
+						<td class="text-center" th:text="${paciente.nome}">Nome</td>
+						<td th:text="${paciente.apelido}">Apelido</td>
+						<td th:text="${paciente.sexo}">Sexo</td>
+						<td th:text="${paciente.nid}">NID</td>
+						<td class="text-center">
+							<a class="btn  btn-link  btn-xs" title="Editar"> 
+								<i class="glyphicon glyphicon-pencil"></i>
+							</a>
+							<a class="btn  btn-link  btn-xs" title="Excluir">
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		</div>
+		</section>
+		
+		</body>
+		
+		</html>

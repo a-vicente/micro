@@ -1,0 +1,64 @@
+/*
+######################
+# UTILIDADES
+######################
+*/
+.ef-required > .control-label:after {
+	content: "*";
+	color: red;
+}
+
+/*######################
+# COMPONENTES
+######################
+*/
+
+/* Field Action */
+.ef-field-action {
+	display: flex;
+}
+
+.ef-field-action__icon {
+	margin: 6px 0 0 5px;
+}
+
+/* Upload */
+.ef-upload {
+	padding: 15px;
+	
+	border: 1px dashed #ddd;
+	border-radius: 4px;
+	background: #fafafa;
+	
+	text-align: center;
+}
+
+.ef-upload-form-file {
+	display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+.ef-upload-form-file > input[type=file] {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    
+    font-size: 500px;
+}
+
+/*######################################
+# CUSTOMIZAÇÃO DE COMPONENTES
+######################################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}

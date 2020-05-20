@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+	version="2.1">
+	
+	<named-native-query name="Documentos.totalPorMes" result-set-mapping="totalPorMesMapping">
+		<query>
+			select date_format(dataAcontecimento, '%Y/%m') mes
+				 , count(*) total
+  			from sfinder.documento
+  			where dataAcontecimento > DATE_SUB(NOW(), INTERVAL 6 MONTH)
+  			  and estado = 'ENTREGUE'
+			group by date_format(dataAcontecimento, '%Y/%m')   
+			order by date_format(dataAcontecimento, '%Y/%m') desc
+	    </query>
+	</named-native-query>
+	
+	<named-native-query name="Documentos.encontradoPorMes" result-set-mapping="encontradoPorMesMapping">
+		<query>
+			select date_format(dataAcontecimento, '%Y/%m') mes
+				 , count(*) total
+  			from sfinder.documento
+  			where dataAcontecimento > DATE_SUB(NOW(), INTERVAL 6 MONTH)
+  			  and estado = 'ENCONTRADO'
+			group by date_format(dataAcontecimento, '%Y/%m')   
+			order by date_format(dataAcontecimento, '%Y/%m') desc
+	    </query>
+	</named-native-query>
+	
+	<named-native-query name="Documentos.pendentePorMes" result-set-mapping="pendentePorMesMapping">
+		<query>
+			select date_format(dataAcontecimento, '%Y/%m') mes
+				 , count(*) total
+  			from sfinder.documento
+  			where dataAcontecimento > DATE_SUB(NOW(), INTERVAL 6 MONTH)
+  			  and estado = 'PENDENTE'
+			group by date_format(dataAcontecimento, '%Y/%m')   
+			order by date_format(dataAcontecimento, '%Y/%m') desc
+	    </query>
+	</named-native-query>
+	
+	<sql-result-set-mapping name="totalPorMesMapping">
+		<constructor-result target-class="com.sicedesign.micro.dto.DocumentoMes">
+			<column name="mes" class="java.lang.String"/>
+			<column name="total" class="java.lang.Integer"/>
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping name="encontradoPorMesMapping">
+		<constructor-result target-class="com.sicedesign.micro.dto.DocumentoMes">
+			<column name="mes" class="java.lang.String"/>
+			<column name="total" class="java.lang.Integer"/>
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping name="pendentePorMesMapping">
+		<constructor-result target-class="com.sicedesign.micro.dto.DocumentoMes">
+			<column name="mes" class="java.lang.String"/>
+			<column name="total" class="java.lang.Integer"/>
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+</entity-mappings>
