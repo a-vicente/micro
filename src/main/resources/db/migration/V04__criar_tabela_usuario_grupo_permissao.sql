@@ -1,5 +1,9 @@
 CREATE TABLE usuario (
     codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+    created_by BIGINT NOT NULL,
+	updated_by BIGINT,
+	creation_date DATE NOT NULL,
+	updated_date DATE,
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(120) NOT NULL,
@@ -9,11 +13,19 @@ CREATE TABLE usuario (
 
 CREATE TABLE grupo (
     codigo BIGINT(20) PRIMARY KEY,
+    created_by BIGINT NOT NULL,
+	updated_by BIGINT,
+	creation_date DATE NOT NULL,
+	updated_date DATE,
     nome VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE permissao (
     codigo BIGINT(20) PRIMARY KEY,
+    created_by BIGINT NOT NULL,
+	updated_by BIGINT,
+	creation_date DATE NOT NULL,
+	updated_date DATE,
     nome VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

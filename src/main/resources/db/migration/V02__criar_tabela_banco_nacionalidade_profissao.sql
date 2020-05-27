@@ -1,12 +1,9 @@
-/*CREATE TABLE banco(
-			codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-			banco VARCHAR(100) NOT NULL,
-			numero_conta Integer NOT NULL UNIQUE,
-			nib Integer NOT NULL UNIQUE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;*/
-
 CREATE TABLE nacionalidade(
 			codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+			created_by BIGINT NOT NULL,
+			updated_by BIGINT,
+			creation_date DATE NOT NULL,
+			updated_date DATE,
 			nome VARCHAR(100) NOT NULL UNIQUE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23,7 +20,7 @@ INSERT INTO profissao(nome) VALUES ("Desenvolvedor de Sistemas");
 
 
 			
-INSERT INTO nacionalidade(nome) VALUES ('Mocambicano');
-INSERT INTO nacionalidade(nome) VALUES ('Sul Africano');
-INSERT INTO nacionalidade(nome) VALUES ('Nigeriano');
+INSERT INTO nacionalidade(created_by, creation_date, nome) VALUES (0, curdate(), "Mocambicano");
+INSERT INTO nacionalidade(created_by, creation_date, nome) VALUES (0, curdate(), "Sul Africano");
+INSERT INTO nacionalidade(created_by, creation_date, nome) VALUES (0, curdate(), "Nigeriano");
 

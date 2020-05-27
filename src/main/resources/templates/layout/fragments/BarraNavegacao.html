@@ -21,7 +21,7 @@
 
 				
 <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')">
-    		<p class="navbar-text" th:text="${#authentication.principal.usuario.nome}">Usuário</p>
+    		<p style="font-family: Comic Sans Ms" class="navbar-text" th:text="${#authentication.principal.usuario.nome}">Usuário</p>
     	</li>
 				<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{/logout}"><em class="fa  fa-sign-out"></em></a>
 				</li>

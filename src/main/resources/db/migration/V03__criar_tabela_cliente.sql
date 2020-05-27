@@ -1,5 +1,9 @@
 CREATE TABLE cliente (
 	codigo BIGINT PRIMARY KEY AUTO_INCREMENT,
+	created_by BIGINT NOT NULL,
+	updated_by BIGINT,
+	creation_date DATE NOT NULL,
+	updated_date DATE,
 	nome VARCHAR(50) NOT NULL,
 	apelido VARCHAR(50) NOT NULL,
 	nome_empresa_profissao VARCHAR(80) NOT NULL,

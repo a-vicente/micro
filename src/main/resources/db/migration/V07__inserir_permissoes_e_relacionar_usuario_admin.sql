@@ -1,7 +1,7 @@
-INSERT INTO permissao VALUES (1, 'ROLE_ADMINISTRADOR');
-INSERT INTO permissao VALUES (2, 'ROLE_APF');
-INSERT INTO permissao VALUES (3, 'ROLE_CLIENT_MANAGER');
-INSERT INTO permissao VALUES (4, 'ROLE_ACCOUNTANT');
+INSERT INTO permissao (codigo, created_by, creation_date, nome) VALUES (1, 0, curdate(), 'ROLE_ADMINISTRADOR');
+INSERT INTO permissao (codigo, created_by, creation_date, nome) VALUES (2, 0, curdate(), 'ROLE_APF');
+INSERT INTO permissao (codigo, created_by, creation_date, nome) VALUES (3, 0, curdate(), 'ROLE_CLIENT_MANAGER');
+INSERT INTO permissao (codigo, created_by, creation_date, nome) VALUES (4, 0, curdate(), 'ROLE_ACCOUNTANT');
 
 INSERT INTO grupo_permissao (codigo_grupo, codigo_permissao) VALUES (1, 1);
 INSERT INTO grupo_permissao (codigo_grupo, codigo_permissao) VALUES (1, 2);
